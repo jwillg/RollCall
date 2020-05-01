@@ -35,6 +35,8 @@
         <activity android:name=".individual_Class_Info" />
         <activity android:name=".ListItemDetail" />
         <activity android:name=".setClassKey" />
+        <activity android:name=".AddClassActivity" />
+        <activity android:name=".AddImageActivity" />
     </application>
 
 </manifest>
