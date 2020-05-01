@@ -26,6 +26,15 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".MainActivity" />
+        <activity android:name=".Addstudent" />
+        <activity android:name=".ClassList" />
+        <activity android:name=".ClassViewPage" />
+        <activity android:name=".databaserealtimetest" />
+        <activity android:name=".GPSboundary" />
+        <activity android:name=".Individual_Student_Information" />
+        <activity android:name=".individual_Class_Info" />
+        <activity android:name=".ListItemDetail" />
+        <activity android:name=".setClassKey" />
     </application>
 
 </manifest>

@@ -25,13 +25,13 @@ class StartActivity : AppCompatActivity() {
         registerR.setOnClickListener {
             // Goes to register page
             startActivity(Intent(this, RegisterActivity::class.java))
-            finish();
+            finish()
         }
 
         loginPage.setOnClickListener {
             // Goes to login page
             startActivity(Intent(this, LoginActivity::class.java))
-            finish();
+            finish()
         }
 
     }
