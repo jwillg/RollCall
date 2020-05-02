@@ -37,6 +37,8 @@
         <activity android:name=".setClassKey" />
         <activity android:name=".AddClassActivity" />
         <activity android:name=".AddImageActivity" />
+        <activity android:name=".ClassViewActivity" />
+        <activity android:name=".EnterCodeActivity" />
     </application>
 
 </manifest>

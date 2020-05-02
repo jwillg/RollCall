@@ -3,6 +3,7 @@ package com.example.rollcallj;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -34,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Intent intent = getIntent();
+        final String classkey = intent.getStringExtra("ClassKey");
 
         logout = findViewById(R.id.LOGOUT);
        // edit = findViewById(R.id.edit);
@@ -52,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
         addClass.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v){
                 startActivity(new Intent(MainActivity.this, AddClassActivity.class));
             }
         });
@@ -80,17 +83,24 @@ public class MainActivity extends AppCompatActivity {
         final ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.list_item, list);
         listView.setAdapter(adapter);
 
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("StudentSide");
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Classes");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 list.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    information info =snapshot.getValue(information.class);
-                    String txt = info.getfName() + ":" + info.getEmail();
+                    ClassInformation info =snapshot.getValue(ClassInformation.class);
+                    String txt = info.getName();
                     list.add(txt);
                 }
                 adapter.notifyDataSetChanged();
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        //String selectedItem = (String) parent.getItemAtPosition(position);
+                        startActivity(new Intent(MainActivity.this, ClassViewActivity.class));
+                    }
+                });
             }
 
             @Override

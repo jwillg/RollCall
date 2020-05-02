@@ -14,7 +14,7 @@ class StartActivity : AppCompatActivity() {
 
         goToEnterKey.setOnClickListener {
             // Goes to the Enter Key Activity page
-            startActivity(Intent(this, EnterKeyActivity::class.java))
+            startActivity(Intent(this, EnterCodeActivity::class.java))
         }
 
         goToTeacherMain.setOnClickListener {
