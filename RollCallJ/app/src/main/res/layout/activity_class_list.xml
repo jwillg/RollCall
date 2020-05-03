@@ -157,11 +157,11 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/CreateClassBtn"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="Create Class"
-        android:id="@+id/CreateClassBtn"
-        />
+        android:text="Create Class" />
+
     <Space
         android:layout_width="match_parent"
         android:layout_height="30dp"

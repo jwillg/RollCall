@@ -9,11 +9,11 @@
     tools:context=".MainActivity">
 
     <Button
+        android:id="@+id/registerT"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:text="TeacherMockup"
-        android:id="@+id/registerT"
-        />
+        android:text="TeacherMockup" />
+
     <Space
         android:layout_width="match_parent"
         android:layout_height="40dp"

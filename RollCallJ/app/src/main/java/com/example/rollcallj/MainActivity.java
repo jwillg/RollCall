@@ -60,24 +60,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-//        HashMap<String, Object> map = new HashMap<>();
-//        map.put("fName", "Riley");
-//        map.put("Email", "test@gmail.com");
-//
-//        FirebaseDatabase.getInstance().getReference().child("StudentSide").child("StudentInfo").updateChildren(map);
-
-//        add.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View v) {
-//                String txt_name = edit.getText().toString();
-//                if (txt_name.isEmpty()){
-//                    Toast.makeText(MainActivity.this, "No name entered!",Toast.LENGTH_SHORT).show();
-//                } else {
-//                    FirebaseDatabase.getInstance().getReference().child("Student").child("fName").setValue(txt_name);
-//                }
-//            }
-//
-//        });
 
         final ArrayList<String> list = new ArrayList<>();
         final ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.list_item, list);
@@ -97,8 +79,10 @@ public class MainActivity extends AppCompatActivity {
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        //String selectedItem = (String) parent.getItemAtPosition(position);
+                        String selectedItem = (String) parent.getItemAtPosition(position);
+                        openclassinfo(selectedItem,classkey);
                         startActivity(new Intent(MainActivity.this, ClassViewActivity.class));
+
                     }
                 });
             }
@@ -111,6 +95,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
+    private void openclassinfo(String studentkey,String classkey) {
+        Intent intent;
+        intent = new Intent(this, EnterCodeActivity.class);
+        intent.putExtra("ClassKey", classkey);
+        startActivity(intent);
+    }
 
 }

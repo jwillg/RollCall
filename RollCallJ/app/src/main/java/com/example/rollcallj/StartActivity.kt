@@ -12,11 +12,6 @@ class StartActivity : AppCompatActivity() {
         setContentView(R.layout.activity_start)
 
 
-        goToEnterKey.setOnClickListener {
-            // Goes to the Enter Key Activity page
-            startActivity(Intent(this, EnterCodeActivity::class.java))
-        }
-
         goToTeacherMain.setOnClickListener {
             // Goes to the Teacher Main Activity page
             startActivity(Intent(this, TeacherMain::class.java))

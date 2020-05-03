@@ -23,7 +23,6 @@ public class ClassViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_class_view);
 
         title = findViewById(R.id.title);
-        className = findViewById(R.id.className);
         startTime = findViewById(R.id.startTime);
         endTime = findViewById(R.id.endTime);
         days = findViewById(R.id.days);

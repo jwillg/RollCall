@@ -12,14 +12,15 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Attendance Type"
-        android:textSize="25dp"
-        android:textColor="@color/colorPrimaryDark"
         android:gravity="center"
+        android:text="Attendance Type"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <Space
         android:layout_width="1dp"
         android:layout_height="30dp"/>
@@ -27,31 +28,30 @@
     <Space
         android:layout_width="1dp"
         android:layout_height="30dp"/>
+
 
     <Switch
         android:id="@+id/switch1"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:textSize="25dp"
-        android:text="GPS"
         android:onClick="submitGPS"
-        />
-
-
-    <Switch
-        android:id="@+id/switch2"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:textSize="25dp"
-        android:text="Facial"
-        android:onClick="submitFacial"/>
+        android:text="GPS"
+        android:textSize="25dp" />
 
     <Switch
         android:id="@+id/switch3"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:textSize="25dp"
+        android:onClick="submitKeyCode"
         android:text="Key Codes"
-        android:onClick="submitKeyCode"/>
+        android:textSize="25dp" />
+
+    <Switch
+        android:id="@+id/switch2"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:onClick="submitFacial"
+        android:text="Facial"
+        android:textSize="25dp" />
 
 </LinearLayout>

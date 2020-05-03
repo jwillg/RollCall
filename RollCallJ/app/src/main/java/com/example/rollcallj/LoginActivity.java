@@ -37,7 +37,16 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v){
                 String txt_email = email.getText().toString();
                 String txt_password = password.getText().toString();
-                loginUser(txt_email, txt_password);
+
+
+                if (txt_email.isEmpty()){
+                    Toast.makeText(LoginActivity.this, "Missing email!", Toast.LENGTH_SHORT).show();
+                } else if(txt_password.isEmpty()){
+                    Toast.makeText(LoginActivity.this, "Missing password!", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    loginUser(txt_email, txt_password);
+                }
             }
         });
 
