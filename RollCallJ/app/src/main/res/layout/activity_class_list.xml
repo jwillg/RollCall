@@ -7,6 +7,11 @@
     android:orientation="vertical"
     tools:context=".ClassList">
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="40dp"
@@ -156,10 +161,15 @@
             />
     </LinearLayout>
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        />
+
     <Button
         android:id="@+id/CreateClassBtn"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:text="Create Class" />
 
     <Space

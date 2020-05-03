@@ -2,6 +2,7 @@ package com.example.rollcallj
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_start.*
 
@@ -30,6 +31,7 @@ class StartActivity : AppCompatActivity() {
         }
 
     }
+
 
 
 }

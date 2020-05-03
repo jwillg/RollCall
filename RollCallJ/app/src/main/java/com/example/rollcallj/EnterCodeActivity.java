@@ -21,25 +21,92 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
-public class EnterCodeActivity extends AppCompatActivity {
+public class EnterCodeActivity extends AppCompatActivity /*implements ValueEventListener*/{
 
     private EditText editKeyValue;
-    private Button goToNext;
+    //private Button goToNext;
     private String txt;
-    private DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+    //private DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+    private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+    private DatabaseReference root;
+    private DatabaseReference classroom;
+    String key;
+    private String classkey,studentkey,studentemail;
+    private String Rnum, Fname, Lname;
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private DatabaseReference userRef = database.getReference("user");
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_key);
         Intent intent = getIntent();
-        final String classkey = intent.getStringExtra("ClassKey");
-
+        classkey = intent.getStringExtra("classkey");
+        studentkey = intent.getStringExtra("student");
+        studentemail = intent.getStringExtra("email");
+        //key = classkey;
         editKeyValue = findViewById(R.id.editKeyValue);
-        goToNext = findViewById(R.id.goToNext);
+        root = firebaseDatabase.getReference().child("Classes");
 
 
+        //goToNext = findViewById(R.id.goToNext);
+    }
+
+    public void submit(View view) {
+        final String txt_code = editKeyValue.getText().toString();
+            root.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot snapshot) {
+                    if (snapshot.hasChild(txt_code)) {
+                        Toast.makeText(EnterCodeActivity.this, "Class Found!", Toast.LENGTH_SHORT).show();
+                        addstudent(txt_code,studentemail,studentkey);
+                        Toast.makeText(EnterCodeActivity.this, "Registered For Class!", Toast.LENGTH_SHORT).show();
+                        //finish();
+                    }else{
+                        Toast.makeText(EnterCodeActivity.this, "Class Not Found!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+    }
+
+    private void addstudent(final String txt_code, final String txt_email, final String studentkey) {
+        userRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    if (ds.child("email").getValue().equals(txt_email)) {
+                        Rnum = ds.child("rnumber").getValue(String.class);
+                        //Toast.makeText(MainActivity.this, Rnum, Toast.LENGTH_SHORT).show();
+                        Fname = ds.child("first_Name").getValue(String.class);
+                        //Toast.makeText(MainActivity.this, Fname, Toast.LENGTH_SHORT).show();
+                        Lname = ds.child("last_Name").getValue(String.class);
+                        //Toast.makeText(MainActivity.this, Lname, Toast.LENGTH_SHORT).show();
+                    }
+                }
+                HashMap<String, Object> classinfo = new HashMap<>();
+                classinfo.put("First_Name",Fname);
+                classinfo.put("Last_Name",Lname);
+                classinfo.put("Email",txt_email);
+                classinfo.put("RNumber",Rnum);
+                Toast.makeText(EnterCodeActivity.this, studentkey, Toast.LENGTH_SHORT).show();
+                FirebaseDatabase.getInstance().getReference().child("Classes").child(classkey).child("Students").child(studentkey).updateChildren(classinfo);
+                Toast.makeText(EnterCodeActivity.this, "Student Created Successfuly", Toast.LENGTH_SHORT).show();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+    }
+
+/*
         goToNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,7 +164,7 @@ public class EnterCodeActivity extends AppCompatActivity {
 
 
     }
-
+*/
 
 
 }

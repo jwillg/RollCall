@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -50,6 +51,8 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+
+
     }
 
     private void loginUser(String email, String password) {
@@ -57,12 +60,28 @@ public class LoginActivity extends AppCompatActivity {
         auth.signInWithEmailAndPassword(email, password).addOnSuccessListener(LoginActivity.this, new OnSuccessListener<AuthResult>() {
             @Override
             public void onSuccess(AuthResult authResult) {
-
                 Toast.makeText(LoginActivity.this, "Login Successful!", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                finish();
+                FirebaseUser user = auth.getCurrentUser();
+                updateUI(user);
             }
 
         });
+    }
+
+    private void updateUI(FirebaseUser user) {
+        Intent profile = new Intent(this,MainActivity.class);
+        profile.putExtra("email",user.getEmail());
+        startActivity(profile);
+        finish();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = auth.getCurrentUser();
+        if (currentUser != null) {
+            updateUI(currentUser);
+        }
     }
 }
