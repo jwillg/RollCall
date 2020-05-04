@@ -32,16 +32,16 @@ public class Ping extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ping);
-        Toast.makeText(this, "Im still Crashing", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Im still Crashing", Toast.LENGTH_SHORT).show();
         Intent intent = getIntent();
         studentkey = intent.getStringExtra("student");
         classkey = intent.getStringExtra("classkey");
         database = FirebaseDatabase.getInstance();
         reff = database.getReference().child("Classes").child(classkey).child("GPSInfo");
         studentref = database.getReference().child("Classes").child(classkey).child("Students").child(studentkey);
-        Toast.makeText(this, "Im still flagging", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Im still flagging", Toast.LENGTH_SHORT).show();
         ActivityCompat.requestPermissions(Ping.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION},123);
-        Toast.makeText(this, "line above killed me", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "line above killed me", Toast.LENGTH_SHORT).show();
 
 
     }

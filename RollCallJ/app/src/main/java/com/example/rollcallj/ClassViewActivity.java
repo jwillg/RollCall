@@ -74,32 +74,6 @@ public class ClassViewActivity extends AppCompatActivity implements ValueEventLi
                 openEnterCode(classkey, studentkey);
             }
         });
-        suprise.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                opensurprise(classkey, studentkey);
-            }
-        });
-    }
-
-    private void opensurprise(String classkey, String studentkey) {
-        /*
-        Calendar cal = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.ENGLISH);
-        DateFormat formatter ;
-        Date date ;
-        formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-        date = (Date)formatter.parse(time);
-        Calendar cal=Calendar.getInstance();
-        cal.setTime(date);
-
-
-        cal.setTime(sdf.parse(time);
-        Calender calander = Calendar.getInstance();
-        SimpleDateFormat simpledateformat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-        Date Date = simpledateformat.format(calander.getTime());
-
-         */
     }
 
     private void openEnterCode(String classkey, String studentkey) {
